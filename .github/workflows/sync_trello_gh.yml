@@ -18,7 +18,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: | 
        python trello_gh_sync.py
-    - name: Sync BT MOZ
+    - name: Sync Bergamot Translator Mozilla
       env:
         TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
         TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
