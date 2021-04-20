@@ -1,7 +1,6 @@
 name: Sync Trello and GH Issues
 on:
-  schedule:
-    - cron:  '0 * * * *'
+  workflow_dispatch:
 jobs:
   syncTrelloAndGH:
     runs-on: ubuntu-latest
