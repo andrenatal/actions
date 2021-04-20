@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import sys
 
 trello_key = os.environ['TRELLO_KEY']
 trello_token = os.environ['TRELLO_TOKEN']
@@ -48,6 +49,8 @@ def readGhIssues(urlIssues):
         )
         pagenum += 1
         _issuelist = json.loads(response.text)
+        if "message" in _issuelist:
+            sys.exit(response.text)
         if len(_issuelist) == 0:
             empty = True
         else:
