@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 trello_key = os.environ['TRELLO_KEY']
 trello_token = os.environ['TRELLO_TOKEN']
