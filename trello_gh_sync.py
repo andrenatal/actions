@@ -8,6 +8,7 @@ id_checkitems = os.environ['CHECKITEMS_ID']
 id_card = os.environ['CARD_ID'] 
 url_issues = os.environ['URL_ISSUES'] 
 
+
 def addCheckItem(idCheckList, issueTitle, checked):
     url = "https://api.trello.com/1/checklists/{}/checkItems".format(idCheckList)
     query = {
@@ -37,11 +38,21 @@ def getCheckItems(idCheckList):
     return response.text
 
 def readGhIssues(urlIssues):
-    response = requests.request(
-        "GET",
-        urlIssues
-    )
-    return response.text
+    empty = False
+    pagenum = 1
+    issueslist = []
+    while not empty:
+        response = requests.request(
+            "GET",
+            urlIssues.format(pagenum)
+        )
+        pagenum += 1
+        _issuelist = json.loads(response.text)
+        if len(_issuelist) == 0:
+            empty = True
+        else:
+            issueslist.extend(_issuelist)
+    return issueslist
 
 def markCheckItemComplete(id_card, id_checkitem):
     url = "https://api.trello.com/1/cards/{}/checkItem/{}".format(id_card, id_checkitem)
@@ -62,11 +73,14 @@ lista = json.loads(getCheckItems(id_checkitems))
 dictcheckitems = {"{}".format(item["name"]):item for item in json.loads(getCheckItems(id_checkitems))}
 
 # then we read all the issues in the gh repo into a dict
-dictissues = {"{} {}".format(item['title'], item["html_url"]):item["state"] for item in json.loads(readGhIssues(url_issues))}
+dictissues = {"{} {}".format(item['title'], item["html_url"]):item["state"] for item in readGhIssues(url_issues) if 'pull_request' not in item}
 
 # then we iterate the list of issues
 for issue in dictissues:
-    # and check if that item exits in the trello card
+    # discard if the issue is a PR
+    if 'pull_request' in dictissues:
+        continue
+    # and check if that item exists in the trello card
     if (issue not in dictcheckitems):
         # if not, then we add
         addCheckItem(id_checkitems, issue, dictissues[issue])
