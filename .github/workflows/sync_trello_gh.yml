@@ -9,5 +9,11 @@ jobs:
       with:
         repository: andrenatal/ghactions
     - name: Run script
+      env:
+        TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+        TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+        CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID }}
+        CARD_ID: ${{ secrets.CARD_ID }}
+        URL_ISSUES: ${{ secrets.URL_ISSUES }}
       run: | 
        python trello_gh_sync.py
