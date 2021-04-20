@@ -44,6 +44,7 @@ def readGhIssues(urlIssues):
     pagenum = 1
     issueslist = []
     while not empty:
+        print("GH API request")
         response = requests.request(
             "GET",
             urlIssues.format(pagenum),
@@ -73,13 +74,14 @@ def markCheckItemComplete(id_card, id_checkitem):
     )
     return response.text
 
+print("read the checkitem list for the extension card")
 # first read the checkitem list for the extension card into a dict
 lista = json.loads(getCheckItems(id_checkitems))
 dictcheckitems = {"{}".format(item["name"]):item for item in json.loads(getCheckItems(id_checkitems))}
-
+print("read all the issues in the gh repo")
 # then we read all the issues in the gh repo into a dict
 dictissues = {"{} {}".format(item['title'], item["html_url"]):item["state"] for item in readGhIssues(url_issues) if 'pull_request' not in item}
-
+print("iterating the list of issues and matching")
 # then we iterate the list of issues
 for issue in dictissues:
     # discard if the issue is a PR
@@ -94,3 +96,4 @@ for issue in dictissues:
         if dictissues[issue] == "closed" and dictcheckitems[issue]["state"] != "complete":
             print("close " + issue)
             markCheckItemComplete(id_card, dictcheckitems[issue]["id"])
+print("end")
