@@ -18,3 +18,13 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: | 
        python trello_gh_sync.py
+    - name: Sync BT MOZ
+      env:
+        TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+        TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+        CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID_BT_MOZ }}
+        CARD_ID: ${{ secrets.CARD_ID_BT_MOZ }}
+        URL_ISSUES: ${{ secrets.URL_ISSUES_BT_MOZ }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: | 
+       python trello_gh_sync.py
