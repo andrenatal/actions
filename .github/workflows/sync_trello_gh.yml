@@ -2,7 +2,7 @@ name: Sync Trello and GH Issues
 on:
   workflow_dispatch:
 jobs:
-  updateFork:
+  syncTrelloAndGH:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
