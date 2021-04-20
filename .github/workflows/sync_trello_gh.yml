@@ -1,0 +1,11 @@
+name: Sync Trello and GH Issues
+on:
+  schedule:
+    - cron:  '*/30 * * * *'
+jobs:
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Run file
+      run: | 
+      python trello_gh_sync.py
