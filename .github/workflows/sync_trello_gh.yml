@@ -8,4 +8,4 @@ jobs:
       uses: actions/checkout@v1
     - name: Run file
       run: | 
-      python trello_gh_sync.py
+       python trello_gh_sync.py
