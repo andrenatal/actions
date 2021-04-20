@@ -28,3 +28,13 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: | 
        python trello_gh_sync.py
+    - name: Sync Bergamot Translator Browsermt
+      env:
+        TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+        TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+        CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID_BT_BMT }}
+        CARD_ID: ${{ secrets.CARD_ID_BT_BMT }}
+        URL_ISSUES: ${{ secrets.URL_ISSUES_BT_BMT }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: | 
+       python trello_gh_sync.py
