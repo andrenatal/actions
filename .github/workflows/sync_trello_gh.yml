@@ -3,10 +3,12 @@ on:
   schedule:
     - cron:  '*/30 * * * *'
 jobs:
+  updateFork:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
         repository: andrenatal/ghactions
-    - name: Run file
+    - name: Run script
       run: | 
        python trello_gh_sync.py
