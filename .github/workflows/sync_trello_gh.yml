@@ -4,8 +4,9 @@ on:
     - cron:  '*/30 * * * *'
 jobs:
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        repository: andrenatal/ghactions
     - name: Run file
       run: | 
        python trello_gh_sync.py
