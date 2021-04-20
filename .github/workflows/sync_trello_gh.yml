@@ -8,12 +8,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: andrenatal/ghactions
-    - name: Run script
+    - name: Synch extension
       env:
         TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
         TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
-        CHECKITEMS_ID: ${{ env.CHECKITEMS_ID }}
-        CARD_ID: ${{ env.CARD_ID }}
-        URL_ISSUES: ${{ env.URL_ISSUES }}
+        CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID }}
+        CARD_ID: ${{ secrets.CARD_ID }}
+        URL_ISSUES: ${{ secrets.URL_ISSUES }}
       run: | 
        python trello_gh_sync.py
