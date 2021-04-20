@@ -1,11 +1,11 @@
 import requests
 import json
 
-trello_key = 'xx'
-trello_token = 'xx'
-id_checkitems = 'xx'
-id_card = 'xx'
-url_issues = "xx"
+trello_key = '${{ secrets.TRELLO_KEY }}'
+trello_token = '${{ secrets.TRELLO_TOKEN }}'
+id_checkitems = '${{ secrets.CHECKITEMS_ID }}'
+id_card = '${{ secrets.CARD_ID }}'
+url_issues = '${{ secrets.URL_ISSUES }}'
 
 def addCheckItem(idCheckList, issueTitle, checked):
     url = "https://api.trello.com/1/checklists/{}/checkItems".format(idCheckList)
