@@ -15,6 +15,6 @@ jobs:
         CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID_EXT }}
         CARD_ID: ${{ secrets.CARD_ID_EXT }}
         URL_ISSUES: ${{ secrets.URL_ISSUES_EXT }}
-        GH_ACTION: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: | 
        python trello_gh_sync.py
