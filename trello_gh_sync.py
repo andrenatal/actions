@@ -8,7 +8,7 @@ trello_token = os.environ['TRELLO_TOKEN']
 id_checkitems = os.environ['CHECKITEMS_ID']
 id_card = os.environ['CARD_ID'] 
 url_issues = os.environ['URL_ISSUES'] 
-
+token = os.environ['GH_TOKEN']
 
 def addCheckItem(idCheckList, issueTitle, checked):
     url = "https://api.trello.com/1/checklists/{}/checkItems".format(idCheckList)
@@ -39,13 +39,15 @@ def getCheckItems(idCheckList):
     return response.text
 
 def readGhIssues(urlIssues):
+    headers = {'Authorization': 'token ' + token}
     empty = False
     pagenum = 1
     issueslist = []
     while not empty:
         response = requests.request(
             "GET",
-            urlIssues.format(pagenum)
+            urlIssues.format(pagenum),
+            headers=headers
         )
         pagenum += 1
         _issuelist = json.loads(response.text)
