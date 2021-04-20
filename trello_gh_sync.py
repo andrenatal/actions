@@ -23,7 +23,6 @@ def addCheckItem(idCheckList, issueTitle, checked):
         url,
         params=query
     )
-    print(response.text)
     return response.text
 
 def getCheckItems(idCheckList):
@@ -37,7 +36,6 @@ def getCheckItems(idCheckList):
         url,
         params=query
     )
-    print(response.text)
     return response.text
 
 def readGhIssues(urlIssues):
@@ -75,7 +73,6 @@ def markCheckItemComplete(id_card, id_checkitem):
         url,
         params=query
     )
-    print(response.text)
     return response.text
 
 print("read the checkitem list for the extension card")
