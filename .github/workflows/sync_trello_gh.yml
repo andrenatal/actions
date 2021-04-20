@@ -15,7 +15,7 @@ jobs:
         CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID_EXT }}
         CARD_ID: ${{ secrets.CARD_ID_EXT }}
         URL_ISSUES: ${{ secrets.URL_ISSUES_EXT }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.PAT }}
       run: | 
        python trello_gh_sync.py
     - name: Sync Bergamot Translator Mozilla
@@ -25,7 +25,7 @@ jobs:
         CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID_BT_MOZ }}
         CARD_ID: ${{ secrets.CARD_ID_BT_MOZ }}
         URL_ISSUES: ${{ secrets.URL_ISSUES_BT_MOZ }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.PAT }}
       run: | 
        python trello_gh_sync.py
     - name: Sync Bergamot Translator Browsermt
@@ -35,6 +35,6 @@ jobs:
         CHECKITEMS_ID: ${{ secrets.CHECKITEMS_ID_BT_BMT }}
         CARD_ID: ${{ secrets.CARD_ID_BT_BMT }}
         URL_ISSUES: ${{ secrets.URL_ISSUES_BT_BMT }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.PAT }}
       run: | 
        python trello_gh_sync.py
