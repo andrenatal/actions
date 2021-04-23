@@ -16,7 +16,6 @@ for issue in dictissues:
     # discard if the issue is a PR
     if 'pull_request' in dictissues:
         continue
-
     checklistid = api_calls.getCheckListId(dictissues[issue]["milestone"], issue)
     api_calls.addCheckItem(checklistid, issue, dictissues[issue]["state"])
 print("end")

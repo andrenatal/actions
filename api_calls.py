@@ -126,4 +126,4 @@ def getCheckListId(milestoneDict, issue):
             params=query
         )
         milestonesListIds[milestoneTitle] = json.loads(response.text)["id"]
-        return id
+        return milestonesListIds[milestoneTitle]
